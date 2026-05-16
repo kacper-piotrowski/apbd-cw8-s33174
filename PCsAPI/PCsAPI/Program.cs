@@ -1,5 +1,6 @@
 using PCsAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using PCsAPI.Services;
 
 namespace PCsAPI;
 
@@ -8,12 +9,11 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
-        // Add services to the container.
+        
 
         builder.Services.AddControllers();
-        // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
+        builder.Services.AddScoped<IDbService, DbService>();
         
         builder.Services.AddDbContext<AppDbContext>(opt =>
         {
