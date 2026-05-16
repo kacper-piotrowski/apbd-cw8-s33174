@@ -1,3 +1,6 @@
+using PCsAPI.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace PCsAPI;
 
 public class Program
@@ -11,6 +14,11 @@ public class Program
         builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
+        
+        builder.Services.AddDbContext<AppDbContext>(opt =>
+        {
+            opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+        });
 
         var app = builder.Build();
 
@@ -18,6 +26,10 @@ public class Program
         if (app.Environment.IsDevelopment())
         {
             app.MapOpenApi();
+            app.UseSwaggerUI(opt =>
+            {
+                opt.SwaggerEndpoint("/openapi/v1.json", "v1");
+            });
         }
 
         app.UseAuthorization();
