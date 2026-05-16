@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PCsAPI.Entities;
 
-public class ComponentTypes
+public class ComponentType
 {
     [Key]
     public int Id { get; set; }
@@ -14,5 +14,5 @@ public class ComponentTypes
     [MaxLength(150)]
     public string Name { get; set; } = String.Empty;
 
-    public ICollection<Components> Components { get; set; } = [];
+    public ICollection<Component> Components { get; set; } = [];
 }

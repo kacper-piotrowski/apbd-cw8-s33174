@@ -2,7 +2,7 @@
 
 namespace PCsAPI.Entities;
 
-public class ComponentManufacturers
+public class ComponentManufacturer
 {
     [Key]
     public int Id { get; set; }
@@ -15,5 +15,5 @@ public class ComponentManufacturers
     
     public DateOnly FoundationDate { get; set; } 
     
-    public ICollection<Components> Components { get; set; } = [];
+    public ICollection<Component> Components { get; set; } = [];
 }

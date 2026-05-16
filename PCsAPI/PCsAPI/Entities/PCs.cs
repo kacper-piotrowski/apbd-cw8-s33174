@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PCsAPI.Entities;
 
-public class PCs
+public class PC
 {
     [Key]
     public int Id { get; set; }
@@ -20,5 +20,5 @@ public class PCs
     
     public int Stock { get; set; }
 
-    public ICollection<PCComponents> PcComponents { get; set; } = [];
+    public ICollection<PCComponent> PcComponents { get; set; } = [];
 }

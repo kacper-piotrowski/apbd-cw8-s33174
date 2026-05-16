@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PCsAPI.Entities;
 
-public class Components
+public class Component
 {
     [Column(TypeName = "char(10)")]
     [MaxLength(10)]
@@ -20,10 +20,10 @@ public class Components
     public int ComponentTypesId { get; set; }
     
     [ForeignKey(nameof(ComponentTypesId))]
-    public ComponentTypes ComponentType { get; set; }
+    public ComponentType ComponentType { get; set; }
     
     [ForeignKey(nameof(ComponentManufacturersId))]
-    public ComponentManufacturers ComponentManufacturer { get; set; }
+    public ComponentManufacturer ComponentManufacturer { get; set; }
     
-    public ICollection<PCComponents> PcComponents { get; set; } = [];
+    public ICollection<PCComponent> PcComponents { get; set; } = [];
 }

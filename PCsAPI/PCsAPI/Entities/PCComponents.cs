@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace PCsAPI.Entities;
 
 [PrimaryKey(nameof(PCId), nameof(ComponentCode))]
-public class PCComponents
+public class PCComponent
 {
     public int PCId {get; set;}
     
@@ -17,8 +17,8 @@ public class PCComponents
     public int Amount {get; set;}
     
     [ForeignKey(nameof(PCId))]
-    public PCs Pc { get; set; } = null;
+    public PC Pc { get; set; } = null;
     
     [ForeignKey(nameof(ComponentCode))]
-    public Components Component { get; set; } = null;
+    public Component Component { get; set; } = null;
 }
